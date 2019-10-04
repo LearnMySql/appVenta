@@ -10,10 +10,17 @@ CREATE TABLE CLIENTE
         CIUCLI varchar(60) comment 'Contiene la ciudad de origen del estudiante.',
 		CONSTRAINT CLI_PK PRIMARY KEY (IDCLI)
 	) comment 'Contiene toda la información de la tabla cliente.';
-    
+   
+/* Validar si se ha creado la tabla */
+select IF 
+	(EXISTS 
+		(select Table_Name from information_schema.TABLES where Table_Name='CLIENTE' and TABLE_SCHEMA='venta'), 
+        'La tabla se ha creado satisfactoriamente', 
+        'No se ha podido crear la tabla'); 
+        
 /* Mostrar estructura de la tabla cliente */
-DESCRIBE CLIENTE;
+-- DESCRIBE CLIENTE;
 
 /* Mensaje */
-SELECT 'La tabla se ha creado satisfactoriamente'
-AS 'Resultado';
+-- SELECT 'La tabla se ha creado satisfactoriamente'
+-- AS 'Resultado';
